@@ -1,0 +1,176 @@
+options:
+	barrelprice: 15 #How much raw cod sells for, you can change this and it will affect the cod price in game.
+	wheatprice: 25 #How much wheat sells for, you can change this and it will affect the wheat price in game.
+	melonprice: 40 #How much melon sells for, you can change this and it will affect the melon price in game.
+	coalprice: 140 #How much coal sells for, you can change this and it will affect the coal price in game.
+	lapisprice: 600 #How much coal sells for, you can change this and it will affect the coal price in game.
+	pumpkinprice: 80 #How much coal sells for, you can change this and it will affect the coal price in game.
+	ironprice: 200 #How much coal sells for, you can change this and it will affect the coal price in game.
+	redstoneprice: 400 #How much coal sells for, you can change this and it will affect the coal price in game.
+	goldprice: 300
+	
+	diamondprice: 800
+	emeraldprice: 1000 
+	magmaprice: 1200
+	obsidianprice: 1600 
+	netheriteprice: 2000
+	starprice: 3000
+	abyssprice: 4000
+	ghastprice: 5200
+	prismarineprice: 6800
+	honeyprice: 8800
+	slimeprice: 11200
+	debrisprice: 14000
+	enderprice: 18000 
+	whiteglazedprice: 25000
+	chiseledprice: 32000
+	boneprice: 45000
+	
+	barrelxp: 15 #How much raw cod xp is, you can change this and it will affect the cod xp in game.
+	wheatxp: 25 #How much wheat sells for, you can change this and it will affect the wheat xp in game.
+	melonxp: 40 #How much melon sells for, you can change this and it will affect the melon xp in game.
+	coalxp: 140 #How much coal sells for, you can change this and it will affect the coal xp in game.
+	lapisxp: 600 #How much coal sells for, you can change this and it will affect the coal xp in game.
+	pumpkinxp: 80 #How much coal sells for, you can change this and it will affect the coal xp in game.
+	ironxp: 200 #How much coal sells for, you can change this and it will affect the coal xp in game.
+	redstonexp: 400 #How much coal sells for, you can change this and it will affect the coal xp in game.
+	goldxp: 300
+	
+	diamondxp: 800
+	emeraldxp: 1000 
+	magmaxp: 1200
+	obsidianxp: 1600 
+	netheritexp: 2000
+	starxp: 3000
+	abyssxp: 4000
+	ghastxp: 5200
+	prismarinexp: 6800
+	honeyxp: 8800
+	slimexp: 11200
+	debrisxp: 14000
+	enderxp: 18000 
+	whiteglazedxp: 25000
+	chiseledxp: 32000
+	bonexp: 45000
+	
+
+on command "/sell":
+	cancel event
+	make player execute command "/sellall"
+	
+	
+command sellall:
+	aliases: sell
+	trigger:
+		set {_cod} to the amount of raw cod in player's inventory
+		set {_codprice} to {@barrelprice} * {_cod} 
+		remove all raw cod from player's inventory
+		set {_codxp} to {@barrelxp} * {_cod}
+		
+		set {_wheat} to the amount of wheat in player's inventory
+		set {_wheatprice} to {@wheatprice} * {_wheat} 
+		remove all wheat from player's inventory
+		set {_wheatxp} to {@wheatxp} * {_wheat}
+
+		set {_coal} to the amount of coal in player's inventory
+		set {_coalprice} to {@coalprice} * {_coal} 
+		remove all coal from player's inventory
+		set {_coalxp} to {@coalxp} * {_coal}
+
+		set {_melon} to the amount of melon slice in player's inventory
+		set {_melonprice} to {@melonprice} * {_melon}
+		remove all melon slice from player's inventory
+		set {_melonxp} to {@coalxp} * {_melon}
+
+		set {_pumpkin} to the amount of pumpkin pie in player's inventory
+		set {_pumpkinprice} to {@pumpkinprice} * {_pumpkin}
+		remove all pumpkin pie from player's inventory
+		
+		set {_iron} to the amount of iron ingot in player's inventory
+		set {_ironprice} to {@ironprice} * {_iron}
+		remove all iron ingot from player's inventory
+				
+		set {_redstone} to the amount of redstone dust in player's inventory
+		set {_redstoneprice} to {@redstoneprice} * {_redstone}
+		remove all redstone dust from player's inventory
+
+		set {_lapis} to the amount of lapis lazuli in player's inventory
+		set {_lapisprice} to {@lapisprice} * {_lapis}
+		remove all lapis lazuli from player's inventory
+
+		set {_gold} to the amount of gold ingot in player's inventory
+		set {_goldprice} to {@goldprice} * {_gold}
+		remove all gold ingots from player's inventory
+#-----------------------------------------------------------------------------------------------------
+		set {_diamond} to the amount of diamond in player's inventory
+		set {_diamondprice} to {@diamondprice} * {_diamond}
+		remove all diamond from player's inventory
+		
+		set {_emerald} to the amount of emerald in player's inventory
+		set {_emeraldprice} to {@emeraldprice} * {_emerald}
+		remove all emerald from player's inventory
+		
+		set {_magma} to the amount of magma block in player's inventory
+		set {_magmaprice} to {@magmaprice} * {_magma}
+		remove all magma block from player's inventory
+		
+		set {_obsidian} to the amount of flint in player's inventory
+		set {_obsidianprice} to {@obsidianprice} * {_obsidian}
+		remove all flint from player's inventory
+		
+		set {_netherite} to the amount of netherite ingot in player's inventory
+		set {_netheriteprice} to {@netheriteprice} * {_netherite}
+		remove all netherite ingot from player's inventory
+		
+		set {_star} to the amount of nether star in player's inventory
+		set {_starprice} to {@starprice} * {_star}
+		remove all nether star from player's inventory
+		
+		set {_abyss} to the amount of amethyst shard in player's inventory
+		set {_abyssprice} to {@abyssprice} * {_abyss}
+		remove all amethyst shard from player's inventory
+		
+		set {_ghast} to the amount of ghast tear in player's inventory
+		set {_ghastprice} to {@ghastprice} * {_ghast}
+		remove all ghast tear from player's inventory
+		
+		set {_prismarine} to the amount of prismarine shard in player's inventory
+		set {_prismarineprice} to {@prismarineprice} * {_prismarine}
+		remove all prismarine shard from player's inventory
+		
+		set {_honey} to the amount of honeycomb in player's inventory
+		set {_honeyprice} to {@honeyprice} * {_honey}
+		remove all honeycomb from player's inventory
+		
+		set {_slime} to the amount of slimeball in player's inventory
+		set {_slimeprice} to {@slimeprice} * {_slime}
+		remove all slimeball from player's inventory
+		
+		set {_debris} to the amount of netherite scrap in player's inventory
+		set {_debris} to {@debrisprice} * {_debris}
+		remove all netherite scrap from player's inventory
+		
+		set {_ender} to the amount of eyes of ender in player's inventory
+		set {_enderprice} to {@enderprice} * {_ender}
+		remove all eyes of ender from player's inventory
+		
+		#set {_prismarine} to the amount of white glazed terracotta in player's inventory
+		#set {_prismarineprice} to {@prismarineprice} * {_prismarine}
+		#remove all gold ingots from player's inventory
+		
+		set {_chiseled} to the amount of quartz in player's inventory
+		set {_chiseledprice} to {@chiseledprice} * {_chiseled}
+		remove all quartz from player's inventory
+		
+		set {_bone} to the amount of bone in player's inventory
+		set {_boneprice} to {@boneprice} * {_bone}
+		remove all bone from player's inventory
+
+		set {_final} to {_codprice} + {_wheatprice} + {_coalprice} + {_melonprice} + {_lapisprice} + {_goldprice} + {_ironprice} + {_pumpkinprice} + {_redstoneprice} + {_boneprice} + {_chiseledprice} + {_enderprice} + {_debrisprice} + {_slimeprice} + {_honeyprice} + {_prismarineprice} + {_ghastprice} + {_abyssprice} + {_starprice} + {_netheriteprice} + {_obsidianprice} + {_magmaprice} + {_emeraldprice} + {_diamondprice} 
+		set {_final} to {_final} * {sellmulti::%player's uuid%}
+		
+		set {xp::%player's uuid%} to {_finalxp} + {xp::%player's uuid%}
+		LevelCheck(player)
+		set {balance::%player's uuid%} to {_final} + {balance::%player's uuid%}
+		#send "&aYou sold %{_final}% items!"
+		Scoreboard(player)

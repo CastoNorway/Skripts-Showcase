@@ -1,0 +1,47 @@
+command givevoucher <text> <text>:
+	aliases: gv
+	permission: *
+	trigger:
+		if arg-1 isn't "multi" or "multiplier" or "genslots" or "generator" or "gen" or "gs" or "m" or "b" or "bal" or "balance" or "token" or "t":
+			send "&cThe options are Multi or Genslots!"
+		if arg-1 is "generator" or "genslots" or "gs" or "generatorslots":
+			arg-2 doesn't contain "."
+			set {_item} to book named "&3&lGENERATOR SLOT VOUCHER" with lore "&fSlots: &3&l%arg-2%%nl%%nl%&7&lRight-Click&7 to redeem"
+			give player {_item}
+		if arg-1 is "multi" or "multiplier" or "m":
+			set {_item} to book named "&3&lMULTIPLIER VOUCHER" with lore "&fMultiplier: &3&l%arg-2%%nl%%nl%&7&lRight-Click&7 to redeem"
+			give player {_item}
+		if arg-1 is "balance" or "bal" or "b":
+			set {_item} to book named "&3&lBALANCE VOUCHER" with lore "&FAMOUNT: &3&l%arg-2%%nl%%nl%&7&lRight-Click&7 to redeem"
+			give player {_item}
+		if arg-1 is "Token" or "T":
+			set {_item} to book named "&3&LTOKEN VOUCHER" with lore "&FAMOUNT: &3&l%arg-2%%nl%%nl%&7&lRight-Click&7 to redeem"
+			give player {_item}
+			
+on right click:
+	player's tool is book
+	if player's tool's name = "&3&lGENERATOR SLOT VOUCHER":
+		set {_slot::*} to uncoloured player's tool's lore
+		set {_slot} to {_slot::1}
+		replace "Slots: " in {_slot} with ""
+		remove 1 of player's tool from player's tool
+		set {_redeems} to {gencap::%player's uuid%} + {_slot} parsed as an integer
+		make console execute command "genset %player% %{_redeems}%"
+	if player's tool's name = "&3&lMULTIPLIER VOUCHER":
+		set {_multi::*} to uncoloured player's tool's lore
+		set {_multi} to {_multi::1}
+		replace "Multiplier: " in {_multi} with ""
+		remove 1 of player's tool from player's tool
+		set {sellmulti::%player's uuid%} to {sellmulti::%player's uuid%} + {_multi} parsed as a number
+	if player's tool's name = "&3&lBALANCE VOUCHER":
+		set {_bal::*} to uncoloured player's tool's lore
+		set {_bal} to {_bal::1}
+		replace "Amount: " in {_bal} with ""
+		remove 1 of player's tool from player's tool
+		set {balance::%player's uuid%} to {balance::%player's uuid%} + {_bal} parsed as a number
+	if player's tool's name = "&3&lTOKEN VOUCHER":
+		set {_token::*} to uncoloured player's tool's lore
+		set {_token} to {_token::1}
+		replace "Amount: " in {_token} with ""
+		remove 1 of player's tool from player's tool
+		set {tokens::%player's uuid%} to {tokens::%player's uuid%} + {_token} parsed as a number

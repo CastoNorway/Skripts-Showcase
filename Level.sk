@@ -1,0 +1,16 @@
+options:
+	LevelUpRequire: 10000 #FIRST LEVEL UP REQUIREMENT, OTHERS ARE BASED OFF THIS
+	
+function LevelCheck(p: player):
+	loop 10 times:
+		set {_u} to {_p}'s uuid
+		set {_level} to {level::%{_u}%} 
+		set {_required} to {@LevelUpRequire} * {_level} if {_level} >= 1
+		set {_required} to {@LevelUpRequire} * 1 if {_level} = 0
+		if {xp::%{_u}%} >= {_required}:
+			remove {_required} from {xp::%{_u}%}
+			add 1 to {_level}
+			loop all players:
+				send "&aYou succesfully Leveled up to %{_level}%!" to {_p}
+			set {level::%{_u}%} to {_level}
+		
