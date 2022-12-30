@@ -1,0 +1,126 @@
+
+ > playertitle.sk
+
+
+command /playertitle [<offlineplayer>] [<text>] [<integer>] [<integer>] [<integer>] [<text>]:
+    permission: staff.playertitle.use
+    permission message: &cYou do not have permission to execute this command!
+    aliases: /Server:playertitle
+    trigger:
+        if arg 1 is not set:
+            if arg 2 is not set:
+                if arg 3 is not set:
+                    if arg 4 is not set:
+                        if arg 5 is not set:
+                            if arg 6 is not set:
+                                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                                stop
+                            if arg 6 is set:
+                                send "&cUnknown arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                                stop
+                        if arg 5 is set:
+                            send "&cUnknown arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                            stop
+                    if arg 4 is set:
+                        send "&cUnknown arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                        stop
+                if arg 3 is set:
+                    send "&cUnknown arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                    stop
+            if arg 2 is set:
+                send "&cUnknown arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                stop
+        if arg 1 is "*" or "@a" or "all" or "all-players":
+            if arg 2 is not set:
+                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                stop
+            if arg 2 is "title":
+                if arg 3 is not set:
+                    send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                    stop
+                if arg 3 is set:
+                    if arg 4 is not set:
+                        send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                        stop
+                    if arg 4 is set:
+                        if arg 5 is not set:
+                            send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                            stop
+                        if arg 5 is set:
+                            if arg 6 is not set:
+                                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                                stop
+                            if arg 6 is set:
+                                execute console command "title @a times %arg-3% %arg-4% %arg-5%"
+                                send title colored arg 6 to all players
+                                stop
+            if arg 2 is "subtitle":
+                if arg 3 is not set:
+                    send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                    stop
+                if arg 3 is set:
+                    if arg 4 is not set:
+                        send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                        stop
+                    if arg 4 is set:
+                        if arg 5 is not set:
+                            send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                            stop
+                        if arg 5 is set:
+                            if arg 6 is not set:
+                                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                                stop
+                            if arg 6 is set:
+                                execute console command "title @a times %arg-3% %arg-4% %arg-5%"
+                                send title "&b" with subtitle colored arg 6 to all players
+                                stop
+            if arg 2 is not "title" or "subtitle":
+                send "&cInvalid arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                stop
+        if arg 1 is set:
+            if arg 2 is not set:
+                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                stop
+            if arg 2 is "title":
+                if arg 3 is not set:
+                    send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                    stop
+                if arg 3 is set:
+                    if arg 4 is not set:
+                        send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                        stop
+                    if arg 4 is set:
+                        if arg 5 is not set:
+                            send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                            stop
+                        if arg 5 is set:
+                            if arg 6 is not set:
+                                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                                stop
+                            if arg 6 is set:
+                                execute console command "title %arg-1% times %arg-3% %arg-4% %arg-5%"
+                                send title colored arg 6 to arg 1
+                                stop
+            if arg 2 is "subtitle":
+                if arg 3 is not set:
+                    send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                    stop
+                if arg 3 is set:
+                    if arg 4 is not set:
+                        send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                        stop
+                    if arg 4 is set:
+                        if arg 5 is not set:
+                            send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                            stop
+                        if arg 5 is set:
+                            if arg 6 is not set:
+                                send "&cMissing arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                                stop
+                            if arg 6 is set:
+                                execute console command "title %arg-1% times %arg-3% %arg-4% %arg-5%"
+                                send title "&b" with subtitle colored arg 6 to arg 1
+                                stop
+            if arg 2 is not "title" or "subtitle":
+                send "&cInvalid arguments! &7/playertitle <player>/* <title/subtitle> <fadein> <stay> <fadeout> <text>"
+                stop

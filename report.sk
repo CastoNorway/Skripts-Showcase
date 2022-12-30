@@ -1,0 +1,63 @@
+
+ > report.sk
+
+
+command /report <offlineplayer> <text>:
+	aliases: /Server:report
+	usage: &cInvalid usage! &7/report <player> <reason>
+	trigger:
+		if {reported.%arg 1%::*} contains player:
+			send "&cYou already reported %arg 1%&c!"
+			stop
+		if player is arg-1:
+			send "&cYou cannot report yourself!"
+			stop
+		if {vanish::%arg 1's uuid%} is true:
+			send "&cYou cannot report an offline player!"
+			stop
+		if arg-1 is offline:
+			send "&cYou cannot report an offline player!"
+			stop
+		loop {reported.%arg 1%::*}:
+			add 1 to {_total}
+		if {_total} >= 5:
+			send "&cThis player has already received numerous reports against them."
+			stop
+		send "&f[Server] &aYou reported &c%arg 1% &afor reason &3%arg 2%&a."
+		loop all players:
+			if loop-player has permission "staff.reports":
+				send "&b" to loop-player
+				send "&d&lNEW REPORT!" to loop-player
+				send "&b%player% &ahas reported &c%arg 1% &afor reason &3%arg 2%" to loop-player
+				send "&b" to loop-player
+				play sound "block.note_block.cow_bell" with volume 1000 and pitch 1 to loop-player
+		add player to {reported.%arg 1%::*}
+		wait 10 minutes
+		remove player from {reported.%arg 1%::*}
+
+command /sendpunished <offlineplayer>:
+	aliases: /Server:sendpunished
+	permission: staff.reports
+	permission message: &cYou do not have permission to execute this command!
+	trigger:
+		loop {reported.%arg 1%::*}:
+			add 1 to {_totalreports}
+			add loop-value's display name to {_reports::*}
+		if {_totalreports} is not set:
+			send "&aYou sent a punished message to &f0 players"
+			stop
+		if {_totalreports} = 1:
+			send "&aYou sent a punished message to &f%{reported.%arg 1%::*}%"
+			loop all players:
+				if {reported.%arg 1%::*} contains loop-player:
+					send "&f[Server] &c%arg 1% &bhas been caught and punished! Thanks for your report." to loop-player
+			delete {reported.%arg 1%::*}
+		if {_totalreports} > 1:
+			set {_reports} to "%{_reports::*}%"
+			replace " and " in {_reports} with "&f, &r"
+			replace ", " in {_reports} with "&f, &r"
+			json("%player%", "&aYou sent a punished message to ||||&f%{_totalreports}% &fplayers||ttp:&fPlayers that reported %arg 1% &8(%{_totalreports}%&8)&f: &f%{_reports}%")
+			loop all players:
+				if {reported.%arg 1%::*} contains loop-player:
+					send "&f[Server] &c%arg 1% &bhas been caught and punished! Thanks for your report." to loop-player
+			delete {reported.%arg 1%::*}
